@@ -12,7 +12,10 @@ void sorting_performance_test(sorter_t sorter, const char *sorter_name, const in
 	for(int i = 0; i < n; i++) {
 		data[i] = i + 1;
 		copy[i] = data[i];
-	}
+        
+        //std::cout << copy[i]<<'\n';
+        
+    }
 	
  	const unsigned int seed = 2128506;
 	shuffle(data, n, seed);
@@ -32,10 +35,10 @@ void sorting_performance_test(sorter_t sorter, const char *sorter_name, const in
 }
 
 TEST(insertion_sort_test, sorting_performance) {
-	sorting_performance_test(insertion_sort, "insertion sort", 50000, 2);
+	sorting_performance_test(insertion_sort, "insertion sort", 50000, 2);//50000
 }
 TEST(merge_sort_test, sorting_performance) {
-	sorting_performance_test(merge_sort, "merge sort", 10e+6, 4);
+    sorting_performance_test(merge_sort, "merge sort", 10e+6, 4);//10e+6
 }
 TEST(quick_sort_test, sorting_performance) {
 	sorting_performance_test(quick_sort, "quick sort", 10e+6, 3);
