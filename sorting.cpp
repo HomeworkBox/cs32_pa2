@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 FT: Felicia Truong & Tyler Weimin Ouyang. All rights reserved.
 //
 
-
+#include <omp.h>
 #include <iostream>
 #include "sorting.h"
 using namespace std;
@@ -44,8 +44,13 @@ int merge_sort(int *items, const int n) {
     else
     {
         int half = n/2;
+        #pragma omp parallel sections
+        {
+        #pragma omp section
         merge_sortRecursive(items, half);
+        #pragma omp section
         merge_sortRecursive(items+half, n-half);
+        }
         merge(items, items+half, items+n);
     }
     
